@@ -1,0 +1,1 @@
+# plugins-yith-essential-kit-for-woocommerce-1
