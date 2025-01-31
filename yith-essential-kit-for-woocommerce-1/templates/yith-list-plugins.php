@@ -76,7 +76,7 @@ $date_format          = __( 'M j, Y @ H:i', 'yith-essential-kit-for-woocommerce-
 					);
 					if ( ! is_wp_error( $info_to_store ) ) {
 
-						$module_info                     = array(
+						$module_info = array(
 							'module_name'              => $info_to_store->name,
 							'module_version'           => $info_to_store->version,
 							'module_rating'            => $info_to_store->rating,
@@ -90,7 +90,7 @@ $date_format          = __( 'M j, Y @ H:i', 'yith-essential-kit-for-woocommerce-
 						if ( $module['slug'] ) {
 							$modules_info[ $module['slug'] ] = $module_info;
 						}
-						$new_data                        = true;
+						$new_data = true;
 					} else {
 						$module_info = array(
 							'module_name'    => $module['name'],
@@ -179,14 +179,16 @@ $date_format          = __( 'M j, Y @ H:i', 'yith-essential-kit-for-woocommerce-
 										alt="New Icon"></span>
 						<?php endif ?>
 						<a href="<?php echo esc_url( $details_link ); ?>" class="thickbox">
-							<img src="https://ps.w.org/<?php echo esc_attr( $module['slug'] ); ?>/assets/icon.svg" class="plugin-icon" alt="">
+							<?php
+							$img_src = plugin_dir_url( __DIR__ ) . 'assets/images/plugins/' . $module['slug'] . '.svg';
+							?>
+							<img src="<?php echo esc_url( $img_src ); ?>" class="plugin-icon" alt="" />
 						</a>
 
 						<div class="name column-name">
 							<h3>
 								<a class="thickbox" href="<?php echo esc_url( $details_link ); ?>">
 									<?php echo esc_html( $module_name ); ?>
-
 								</a>
 							</h3>
 							<span>
@@ -218,7 +220,7 @@ $date_format          = __( 'M j, Y @ H:i', 'yith-essential-kit-for-woocommerce-
 					</div>
 
 				</div>
-				<?php
+			<?php
 			endforeach;
 			if ( $new_data ) {
 				set_site_transient( 'yith_essential_kit_modules_info', $modules_info, 12 * HOUR_IN_SECONDS );

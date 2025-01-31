@@ -153,8 +153,6 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 				10
 			);
 
-			add_action( 'plugins_loaded', array( $this, 'plugin_fw_loader' ), 15 );
-
 			// admin page.
 			add_action( 'admin_menu', array( $this, 'add_admin_modules_page' ), 95 );
 
@@ -201,22 +199,6 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 				delete_option( $this->_plugin_list_hide_notice_option_name );
 			}
 
-		}
-
-		/**
-		 * Load plugin framework
-		 *
-		 * @return void
-		 * @since  1.0
-		 */
-		public function plugin_fw_loader() {
-			if ( ! defined( 'YIT_CORE_PLUGIN' ) ) {
-				global $plugin_fw_data;
-				if ( ! empty( $plugin_fw_data ) ) {
-					$plugin_fw_file = array_shift( $plugin_fw_data );
-					require_once $plugin_fw_file;
-				}
-			}
 		}
 
 		/**

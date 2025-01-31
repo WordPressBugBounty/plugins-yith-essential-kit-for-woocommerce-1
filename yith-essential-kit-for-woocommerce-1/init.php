@@ -7,15 +7,15 @@
  * Domain Path: /languages/
  * Author: YITH
  * Author URI: https://yithemes.com/
- * Version: 2.37.0
+ * Version: 2.39.0
  * Requires at least: 6.4
- * Tested up to: 6.6
+ * Tested up to: 6.7.1
  * WC requires at least: 9.1
- * WC tested up to: 9.3
+ * WC tested up to: 9.6
  *
  * @author YITH <plugins@yithemes.com>
  * @package YITH Essential Kit for Woocommerce #1
- * @version 2.37.0
+ * @version 2.39.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -55,12 +55,14 @@ if ( ! function_exists( 'yith_plugin_registration_hook' ) ) {
 }
 register_activation_hook( __FILE__, 'yith_plugin_registration_hook' );
 
-/* Plugin Framework Version Check */
-! function_exists( 'yit_maybe_plugin_fw_loader' ) && require_once 'plugin-fw/init.php';
-yit_maybe_plugin_fw_loader( dirname( __FILE__ ) );
+// Plugin Framework Loader.
+if ( file_exists( plugin_dir_path( __FILE__ ) . 'plugin-fw/init.php' ) ) {
+	require_once plugin_dir_path( __FILE__ ) . 'plugin-fw/init.php';
+}
 
-
-load_plugin_textdomain( 'yith-essential-kit-for-woocommerce-1', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+if ( function_exists( 'yith_plugin_fw_load_plugin_textdomain' ) ) {
+	yith_plugin_fw_load_plugin_textdomain( 'yith-essential-kit-for-woocommerce-1', basename( dirname( __FILE__ ) ) . '/languages' );
+}
 
 if ( ! class_exists( 'Plugin_Upgrader' ) ) {
 	include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';

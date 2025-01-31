@@ -3,8 +3,8 @@
 Contributors: yithemes
 Tags: woocommerce,yith woocommerce colors and labels variations,yith woocommerce zoom magnifier,yith woocommerce wishlist,yith woocommerce ajax product filter,yith woocommerce ajax search,yith woocommerce catalog mode, yith woocommerce badges management,yith woocommerce cart messages,yith woocommerce quick view,yith woocommerce stripe,yith woocommerce request a quote,yith woocommerce tab manager
 Requires at least: 6.4
-Tested up to: 6.6
-Stable tag: 2.37.0
+Tested up to: 6.7.1
+Stable tag: 2.39.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -117,6 +117,14 @@ You can get additional features of the plugins installed with the premium versio
 YITH Essential Kit for WooCommerce #1 will add a new submenu called "YITH Essential Kit for WooCommerce #1" under "YIT Plugins" menu. Here you are able to activate/deactivate all the plugins within.
 
 == Changelog ==
+= 2.39.0 - Released on 31 January 2025 =
+* New: support for WooCommerce 9.6
+* Update: YITH plugin framework
+
+= 2.38.0 - Released on 18 December 2024 =
+* New: support for WordPress 9.7.1
+* Update: YITH plugin framework
+
 = 2.37.0 - Released on 12 September 2024 =
 * New: support for WooCommerce 9.3
 * Update: YITH plugin framework
