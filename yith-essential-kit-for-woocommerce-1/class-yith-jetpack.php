@@ -16,27 +16,27 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 	 */
 	class YITH_JetPack {
 
-		const PLUGIN_LIST_FILTER_MODULE_NAME          = 'yith_jetpack_modules';
-		const ACTIVATED_MODULES_OPTION_BASE_NAME      = 'yith_jetpack_active_modules';
-		const DEACTIVATED_PLUGIN_OPTION_NAME          = 'yith_jetpack_deactivated_plugin';
-		const MODULE_LIST_OPTION_NAME                 = 'yith_jetpack_inserted_modules';
+		const PLUGIN_LIST_FILTER_MODULE_NAME = 'yith_jetpack_modules';
+		const ACTIVATED_MODULES_OPTION_BASE_NAME = 'yith_jetpack_active_modules';
+		const DEACTIVATED_PLUGIN_OPTION_NAME = 'yith_jetpack_deactivated_plugin';
+		const MODULE_LIST_OPTION_NAME = 'yith_jetpack_inserted_modules';
 		const MODULE_LIST_ACTIVATION_HOOK_OPTION_NAME = 'yith_jetpack_activation_hook';
-		const MODULES_LIST_QUERY_VALUE                = 'yith-jetpack-modules';
+		const MODULES_LIST_QUERY_VALUE = 'yith-jetpack-modules';
 
 
 		/**
 		 * Index ID
 		 *
-		 * @var int $index
+		 * @var int $_index
 		 */
-		protected $index = 0;
+		protected $_index = 1;
 
 		/**
 		 * Plugin path
 		 *
 		 * @var string $_plugin_path
 		 */
-		protected $_plugin_path = '';
+		protected $_plugin_path = __FILE__;
 
 		/**
 		 * Package title
@@ -44,6 +44,14 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 		 * @var string $_package_title
 		 */
 		protected $_package_title = '';
+
+		/**
+		 * Module name
+		 *
+		 * @var string $_package_title
+		 */
+		protected $_menu_title = 'YITH Essential Kit for WooCommerce #1';
+
 
 		/**
 		 * Filtered module name
@@ -104,23 +112,16 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 		/**
 		 * Constructor
 		 *
-		 * @param string $path module path.
-		 * @param string $title module title.
-		 * @param int    $index module array idex.
-		 *
 		 * @since 1.0.0
 		 */
-		public function __construct( $path, $title, $index ) {
+		public function __construct() {
 
-			$this->$index                              = $index;
-			$this->_plugin_path                        = $path;
-			$this->_menu_title                         = $title;
-			$this->_plugin_list_filter_module_name     = self::PLUGIN_LIST_FILTER_MODULE_NAME . $this->$index;
-			$this->_activate_module_option_name        = self::ACTIVATED_MODULES_OPTION_BASE_NAME . $this->$index;
-			$this->_deactivated_plugin_option_name     = self::DEACTIVATED_PLUGIN_OPTION_NAME . $this->$index;
-			$this->_module_list_option_name            = self::MODULE_LIST_OPTION_NAME . $this->$index;
-			$this->_module_activation_hook_option_name = self::MODULE_LIST_ACTIVATION_HOOK_OPTION_NAME . $this->$index;
-			$this->_modules_list_query_value           = self::MODULES_LIST_QUERY_VALUE . $this->$index;
+			$this->_plugin_list_filter_module_name     = self::PLUGIN_LIST_FILTER_MODULE_NAME . $this->_index;
+			$this->_activate_module_option_name        = self::ACTIVATED_MODULES_OPTION_BASE_NAME . $this->_index;
+			$this->_deactivated_plugin_option_name     = self::DEACTIVATED_PLUGIN_OPTION_NAME . $this->_index;
+			$this->_module_list_option_name            = self::MODULE_LIST_OPTION_NAME . $this->_index;
+			$this->_module_activation_hook_option_name = self::MODULE_LIST_ACTIVATION_HOOK_OPTION_NAME . $this->_index;
+			$this->_modules_list_query_value           = self::MODULES_LIST_QUERY_VALUE . $this->_index;
 
 			add_action(
 				'wp_ajax_activate_yith_essential_kit_module',
@@ -180,7 +181,7 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 			 * @var array $plugins_list
 			 */
 			require_once dirname( __FILE__ ) . '/modules.php';
-			$this->modules = $plugins_list;
+			$this->_modules = $plugins_list;
 		}
 
 
@@ -188,6 +189,7 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 		 * Reset YIT_Framework option
 		 *
 		 * @param string $plugin Plugin name.
+		 *
 		 * @return void
 		 */
 		public function reset_yith_jetpack_option( $plugin ) {
@@ -245,7 +247,7 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 		 * Retrieve the pathname to the module file
 		 *
 		 * @param string $module The module to find the file specified on second parameter.
-		 * @param string $path   The relative path to a file.
+		 * @param string $path The relative path to a file.
 		 *
 		 * @return string
 		 * @since 1.0.0
@@ -327,7 +329,7 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 		 * Check if a plugin is installed. Does not take must-use plugins into account.
 		 *
 		 * @param string $slug Plugin slug.
-		 * @param bool   $migration Migration check.
+		 * @param bool $migration Migration check.
 		 *
 		 * @return bool True if installed, false otherwise.
 		 */
@@ -336,8 +338,8 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 			if ( $migration && 'yith-color-and-label-variations-for-woocommerce' == $slug ) {
 				$slug = 'yith-woocommerce-colors-labels-variations';
 			}
-			if ( isset( $this->modules[ $slug ] ) ) {
-				$module = $this->modules[ $slug ];
+			if ( isset( $this->_modules[ $slug ] ) ) {
+				$module = $this->_modules[ $slug ];
 				$found  = file_exists( plugin_dir_path( __DIR__ ) . $module['slug'] . '/plugin-fw/init.php' );
 
 				return $found;
@@ -353,8 +355,8 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 		 */
 		public function is_premium_installed( $slug ) {
 			$found = false;
-			if ( isset( $this->modules[ $slug ] ) ) {
-				$module      = $this->modules[ $slug ];
+			if ( isset( $this->_modules[ $slug ] ) ) {
+				$module      = $this->_modules[ $slug ];
 				$init        = isset( $module['init'] ) ? $module['init'] : 'init.php';
 				$premium_dir = isset( $module['premium-dir'] ) ? $module['premium-dir'] : $module['slug'] . '-premium';
 				$found       = file_exists( plugin_dir_path( __DIR__ ) . $premium_dir . '/plugin-fw/' . $init );
@@ -373,8 +375,8 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 		public function is_plugin_active( $slug ) {
 			$active = false;
 
-			if ( isset( $this->modules[ $slug ] ) ) {
-				$module = $this->modules[ $slug ];
+			if ( isset( $this->_modules[ $slug ] ) ) {
+				$module = $this->_modules[ $slug ];
 				$active = is_plugin_active( isset( $module['init'] ) ? $module['slug'] . '/' . $module['init'] : $module['slug'] . '/init.php' );
 			}
 
@@ -392,8 +394,8 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 
 			$active = false;
 
-			if ( isset( $this->modules[ $slug ] ) ) {
-				$module = $this->modules[ $slug ];
+			if ( isset( $this->_modules[ $slug ] ) ) {
+				$module = $this->_modules[ $slug ];
 				$active = defined( $module['premium'] );
 			}
 
@@ -418,11 +420,11 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 				'message' => esc_html__( 'Error during request', 'yith-essential-kit-for-woocommerce-1' ),
 			);
 			if ( $slug && ! $active ) {
-				if ( isset( $this->modules[ $slug ] ) ) {
-					$module       = $this->modules[ $slug ];
+				if ( isset( $this->_modules[ $slug ] ) ) {
+					$module       = $this->_modules[ $slug ];
 					$message      = sprintf( esc_html__( 'Module %s enabled', 'yith-essential-kit-for-woocommerce-1' ), $module['name'] );
 					$fail_message = sprintf( esc_html__( 'Activation error for plugin %s', 'yith-essential-kit-for-woocommerce-1' ), $slug );
-					$module       = $this->modules[ $slug ];
+					$module       = $this->_modules[ $slug ];
 					$init         = isset( $module['init'] ) ? $module['slug'] . '/' . $module['init'] : $module['slug'] . '/init.php';
 					$action       = activate_plugin( $init );
 					$status       = ! is_wp_error( $action );
@@ -454,8 +456,8 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 				'message' => esc_html__( 'Error during request', 'yith-essential-kit-for-woocommerce-1' ),
 			);
 			if ( $slug && $active ) {
-				if ( isset( $this->modules[ $slug ] ) ) {
-					$module       = $this->modules[ $slug ];
+				if ( isset( $this->_modules[ $slug ] ) ) {
+					$module       = $this->_modules[ $slug ];
 					$message      = sprintf( esc_html__( 'Module %s disabled', 'yith-essential-kit-for-woocommerce-1' ), $module['name'] );
 					$fail_message = sprintf( esc_html__( 'Deactivation error for module %s', 'yith-essential-kit-for-woocommerce-1' ), $slug );
 					$init         = isset( $module['init'] ) ? $module['slug'] . '/' . $module['init'] : $module['slug'] . '/init.php';
@@ -489,8 +491,8 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 				'message' => esc_html__( 'Error during request', 'yith-essential-kit-for-woocommerce-1' ),
 			);
 			if ( $slug && ! $installed ) {
-				if ( isset( $this->modules[ $slug ] ) ) {
-					$module       = $this->modules[ $slug ];
+				if ( isset( $this->_modules[ $slug ] ) ) {
+					$module       = $this->_modules[ $slug ];
 					$message      = sprintf( esc_html__( 'Module %s installed', 'yith-essential-kit-for-woocommerce-1' ), $module['name'] );
 					$fail_message = sprintf( esc_html__( 'Installation error for plugin %s', 'yith-essential-kit-for-woocommerce-1' ), $slug );
 					$url          = 'https://downloads.wordpress.org/plugin/' . $slug . '.zip';
@@ -545,8 +547,8 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 		 * @return string
 		 */
 		public function print_action_buttons( $slug ) {
-			if ( isset( $this->modules[ $slug ] ) ) {
-				$module = $this->modules[ $slug ];
+			if ( isset( $this->_modules[ $slug ] ) ) {
+				$module = $this->_modules[ $slug ];
 
 				$is_module_installed = $this->is_plugin_installed( $slug );
 				$is_module_active    = $this->is_plugin_active( $slug );
@@ -644,40 +646,40 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 						esc_html_e( 'Please wait for next page to load...', 'yith-essential-kit-for-woocommerce-1' );
 						$url = 'https://downloads.wordpress.org/plugin/' . $old_module . '.zip';
 						$this->non_ajax_install_module_routine( $url );
-						if ( isset( $this->modules[ $old_module ] ) ) {
-							$module = $this->modules[ $old_module ];
+						if ( isset( $this->_modules[ $old_module ] ) ) {
+							$module = $this->_modules[ $old_module ];
 							$init   = isset( $module['init'] ) ? $module['slug'] . '/' . $module['init'] : $module['slug'] . '/init.php';
 							activate_plugin( $init );
 						}
 						?>
-						<script>
-							function pageReload() {
-								location.reload();
-							}
+                        <script>
+                            function pageReload() {
+                                location.reload();
+                            }
 
-							setTimeout(pageReload, 2000);
-						</script>
-						<div style="clear: both"></div>
+                            setTimeout(pageReload, 2000);
+                        </script>
+                        <div style="clear: both"></div>
 						<?php
 						return;
 					} elseif ( $installed && ! $this->is_plugin_active( $old_module ) ) {
 						// module is installed.
 						echo '<div class="loading-bar-' . esc_attr( $i ) . '"><div class="loading-inner" style="width: ' . esc_attr( 100 * $i / $num_elem ) . '%">loading...</div></div>';
 						esc_html_e( 'Please wait for next page to load...', 'yith-essential-kit-for-woocommerce-1' );
-						if ( isset( $this->modules[ $old_module ] ) ) {
-							$module = $this->modules[ $old_module ];
+						if ( isset( $this->_modules[ $old_module ] ) ) {
+							$module = $this->_modules[ $old_module ];
 							$init   = isset( $module['init'] ) ? $module['slug'] . '/' . $module['init'] : $module['slug'] . '/init.php';
 							activate_plugin( $init );
 						}
 						?>
-						<script>
-							function pageReload() {
-								location.reload();
-							}
+                        <script>
+                            function pageReload() {
+                                location.reload();
+                            }
 
-							setTimeout(pageReload, 2000);
-						</script>
-						<div style="clear: both"></div>
+                            setTimeout(pageReload, 2000);
+                        </script>
+                        <div style="clear: both"></div>
 						<?php
 						return;
 					}

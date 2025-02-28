@@ -7,15 +7,15 @@
  * Domain Path: /languages/
  * Author: YITH
  * Author URI: https://yithemes.com/
- * Version: 2.39.0
+ * Version: 2.40.0
  * Requires at least: 6.4
- * Tested up to: 6.7.1
+ * Tested up to: 6.7.2
  * WC requires at least: 9.1
- * WC tested up to: 9.6
+ * WC tested up to: 9.7.0
  *
  * @author YITH <plugins@yithemes.com>
  * @package YITH Essential Kit for Woocommerce #1
- * @version 2.39.0
+ * @version 2.40.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -71,7 +71,7 @@ require_once YJP_DIR . 'class-yith-jetpack.php';
 require_once YJP_DIR . 'class-yith-essential-kit-upgrader-skin.php';
 
 global $yith_jetpack_1;
-$yith_jetpack_1 = new YITH_JetPack( __FILE__, 'YITH Essential Kit for WooCommerce #1', 1 );
+$yith_jetpack_1 = new YITH_JetPack();
 
 register_activation_hook( __FILE__, 'yith_essential_kit_welcome_screen_activate' );
 /**

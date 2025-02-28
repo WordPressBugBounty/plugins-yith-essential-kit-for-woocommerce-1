@@ -27,7 +27,7 @@ if ( ! current_user_can( 'activate_plugins' ) ) {
 global $yith_jetpack_1;
 global $pagenow;
 $modules              = array();
-$modules              = apply_filters( $this->_plugin_list_filter_module_name, $yith_jetpack_1->modules );
+$modules              = apply_filters( $this->_plugin_list_filter_module_name, $yith_jetpack_1->_modules );
 $active_modules       = array();
 $module_inserted_list = array();
 

@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the YITH Essential Kit for WooCommerce #1 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: YITH Essential Kit for WooCommerce #1 2.39.0\n"
+"Project-Id-Version: YITH Essential Kit for WooCommerce #1 2.40.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/yith-essential-kit-for-woocommerce-1\n"
-"POT-Creation-Date: 2025-01-31 14:42:50+00:00\n"
+"POT-Creation-Date: 2025-02-28 14:17:50+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,64 +14,64 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: class-yith-jetpack.php:217
+#: class-yith-jetpack.php:219
 msgid "Modules List"
 msgstr ""
 
-#: class-yith-jetpack.php:418 class-yith-jetpack.php:454
-#: class-yith-jetpack.php:489
+#: class-yith-jetpack.php:420 class-yith-jetpack.php:456
+#: class-yith-jetpack.php:491
 msgid "Error during request"
 msgstr ""
 
-#: class-yith-jetpack.php:423
+#: class-yith-jetpack.php:425
 msgid "Module %s enabled"
 msgstr ""
 
-#: class-yith-jetpack.php:424
+#: class-yith-jetpack.php:426
 msgid "Activation error for plugin %s"
 msgstr ""
 
-#: class-yith-jetpack.php:459
+#: class-yith-jetpack.php:461
 msgid "Module %s disabled"
 msgstr ""
 
-#: class-yith-jetpack.php:460
+#: class-yith-jetpack.php:462
 msgid "Deactivation error for module %s"
 msgstr ""
 
-#: class-yith-jetpack.php:494
+#: class-yith-jetpack.php:496
 msgid "Module %s installed"
 msgstr ""
 
-#: class-yith-jetpack.php:495
+#: class-yith-jetpack.php:497
 msgid "Installation error for plugin %s"
 msgstr ""
 
-#: class-yith-jetpack.php:579
+#: class-yith-jetpack.php:581
 msgid "install %s now"
 msgstr ""
 
-#: class-yith-jetpack.php:579
+#: class-yith-jetpack.php:581
 msgid "Install now"
 msgstr ""
 
-#: class-yith-jetpack.php:595
+#: class-yith-jetpack.php:597
 msgid "Deactivate %s now"
 msgstr ""
 
-#: class-yith-jetpack.php:595
+#: class-yith-jetpack.php:597
 msgid "Deactivate"
 msgstr ""
 
-#: class-yith-jetpack.php:617
+#: class-yith-jetpack.php:619
 msgid "activate %s now"
 msgstr ""
 
-#: class-yith-jetpack.php:617
+#: class-yith-jetpack.php:619
 msgid "Activate"
 msgstr ""
 
-#: class-yith-jetpack.php:644 class-yith-jetpack.php:666
+#: class-yith-jetpack.php:646 class-yith-jetpack.php:668
 msgid "Please wait for next page to load..."
 msgstr ""
 
