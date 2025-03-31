@@ -52,6 +52,9 @@ $date_format          = __( 'M j, Y @ H:i', 'yith-essential-kit-for-woocommerce-
 			<?php
 			$new_data     = false;
 			$modules_info = get_site_transient( 'yith_essential_kit_modules_info' );
+			if ( false === $modules_info ) {
+				$modules_info = array();
+			}
 			foreach ( $modules as $module ) :
 				?>
 				<?php

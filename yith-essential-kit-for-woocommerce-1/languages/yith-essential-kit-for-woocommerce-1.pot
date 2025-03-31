@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the YITH Essential Kit for WooCommerce #1 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: YITH Essential Kit for WooCommerce #1 2.40.0\n"
+"Project-Id-Version: YITH Essential Kit for WooCommerce #1 2.41.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/yith-essential-kit-for-woocommerce-1\n"
-"POT-Creation-Date: 2025-02-28 14:17:50+00:00\n"
+"POT-Creation-Date: 2025-03-31 14:21:00+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -112,23 +112,23 @@ msgstr ""
 msgid "Plugin enabled"
 msgstr ""
 
-#: templates/yith-list-plugins.php:129
+#: templates/yith-list-plugins.php:132
 msgid "More information about %s"
 msgstr ""
 
-#: templates/yith-list-plugins.php:129
+#: templates/yith-list-plugins.php:132
 msgid "More Details"
 msgstr ""
 
-#: templates/yith-list-plugins.php:143
+#: templates/yith-list-plugins.php:146
 msgid "Premium Activated"
 msgstr ""
 
-#: templates/yith-list-plugins.php:158
+#: templates/yith-list-plugins.php:161
 msgid "Activate Premium"
 msgstr ""
 
-#: templates/yith-list-plugins.php:163
+#: templates/yith-list-plugins.php:166
 msgid "Buy Premium Version"
 msgstr ""
 
