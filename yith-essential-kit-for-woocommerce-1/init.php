@@ -7,15 +7,15 @@
  * Domain Path: /languages/
  * Author: YITH
  * Author URI: https://yithemes.com/
- * Version: 2.42.0
+ * Version: 2.43.0
  * Requires at least: 6.4
- * Tested up to: 6.8
+ * Tested up to: 6.7.2
  * WC requires at least: 9.1
- * WC tested up to: 9.8
+ * WC tested up to: 10.0
  *
  * @author YITH <plugins@yithemes.com>
  * @package YITH Essential Kit for Woocommerce #1
- * @version 2.42.0
+ * @version 2.43.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -47,7 +47,7 @@ if ( ! defined( 'YJP_TEMPLATE_PATH' ) ) {
 }
 
 if ( ! defined( 'YJP_VERSION' ) ) {
-	define( 'YJP_VERSION', '2.42.0' );
+	define( 'YJP_VERSION', '2.43.0' );
 }
 
 if ( ! function_exists( 'yith_plugin_registration_hook' ) ) {
