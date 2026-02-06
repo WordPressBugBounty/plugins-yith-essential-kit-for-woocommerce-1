@@ -316,7 +316,7 @@ if ( ! class_exists( 'YITH_JetPack' ) ) {
 					YJP_ASSETS_URL . '/js/yith-essential-kit-1.js',
 					array(
 						'jquery',
-						'jquery-blockui',
+						\YIT_Assets::wc_script_handle( 'wc-jquery-blockui' ),
 					),
 					YJP_VERSION,
 					true
